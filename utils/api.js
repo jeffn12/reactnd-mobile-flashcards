@@ -1,10 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import {
-  DECKS_STORAGE_KEY,
-  formatDecks,
-  makeNewDeck,
-  showAsyncStorage
-} from "./helpers";
+import { DECKS_STORAGE_KEY, formatDecks, makeNewDeck } from "./helpers";
 
 // Get all decks
 export const getDecks = () => {

@@ -38,11 +38,13 @@ export class AddQuestion extends Component {
     const { dispatch, deckId } = this.props;
     const { question, answer } = this.state;
 
-    addCardToDeck(deckId, { question, answer });
-
-    getDecks().then((decks) => {
-      dispatch(receiveDecks(decks));
-    });
+    // Add a card to the deck in async storage
+    addCardToDeck(deckId, { question, answer }).then(() =>
+      getDecks().then((decks) => {
+        // once card is in aynsc store, update redux
+        dispatch(receiveDecks(decks));
+      })
+    );
 
     this.setState(() => ({
       question: "",
