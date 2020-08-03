@@ -5,7 +5,6 @@ import { View, Text } from "react-native";
 import AddQuestion from "./AddQuestion";
 // Helpers
 import { getDecks } from "../utils/api";
-import { showAsyncStorage } from "../utils/helpers";
 import { receiveDecks } from "../actions";
 
 /**
@@ -15,8 +14,6 @@ import { receiveDecks } from "../actions";
 
 export class DeckList extends Component {
   componentDidMount = () => {
-    showAsyncStorage();
-
     const { dispatch } = this.props;
 
     getDecks().then((decks) => dispatch(receiveDecks(decks)));
@@ -26,7 +23,6 @@ export class DeckList extends Component {
     const { decks } = this.props;
     return (
       <View>
-        {console.log("rendering decklist")}
         <Text>Decks in your App:</Text>
         {Object.keys(decks).map((deck) => {
           return (
