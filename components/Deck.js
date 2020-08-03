@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 // Components
 import AddQuestion from "./AddQuestion";
 
 /**
-  - title
-  - \# of cards in the deck
-  - option to add a new card
-  - option to start a quiz with the deck
+  - [x] title
+  - [x] \# of cards in the deck
+  - [-] option to add a new card
+  - [ ] option to start a quiz with the deck
  */
 
 export class Deck extends Component {
@@ -21,6 +21,9 @@ export class Deck extends Component {
           {title}: {questions.length} questions
         </Text>
         <AddQuestion deckId={title} />
+        <TouchableOpacity style={Styles.submitBtn}>
+          <Text>START A QUIZ</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -48,6 +51,12 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     padding: "10px",
     margin: "10px",
+    width: "50%"
+  },
+  submitBtn: {
+    backgroundColor: "#F0F8FF",
+    alignItems: "center",
+    margin: "5px",
     width: "50%"
   }
 });
