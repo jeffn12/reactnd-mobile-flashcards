@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
-import { View, Text } from "react-native";
-import AddQuestion from "./AddQuestion";
+import { View, Text, StyleSheet } from "react-native";
 // Helpers
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
@@ -22,13 +21,14 @@ export class DeckList extends Component {
   render() {
     const { decks } = this.props;
     return (
-      <View>
-        <Text>Decks in your App:</Text>
+      <View style={Styles.container}>
         {Object.keys(decks).map((deck) => {
           return (
             <View key={deck}>
-              <Text>{decks[deck].title}</Text>
-              <Text>{decks[deck].questions.length} questions</Text>
+              <Text style={Styles.deckTitle}>{decks[deck].title}</Text>
+              <Text style={Styles.questionLabel}>
+                {decks[deck].questions.length} questions
+              </Text>
             </View>
           );
         })}
@@ -40,3 +40,21 @@ export class DeckList extends Component {
 const mapStateToProps = (decks) => decks;
 
 export default connect(mapStateToProps)(DeckList);
+
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    borderColor: "black",
+    borderRadius: "3px",
+    shadowColor: "grey",
+    shadowRadius: "3px",
+    shadowOffset: { width: "3px", height: "-3px" }
+  },
+  deckTitle: {
+    fontSize: "2rem"
+  },
+  questionLabel: {
+    fontSize: "1rem",
+    fontStyle: "italic"
+  }
+});
