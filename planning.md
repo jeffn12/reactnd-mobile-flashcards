@@ -2,7 +2,7 @@
 
 ## Views
 
-- [ ] Deck List (show a list of the Deck components)
+- [x] Deck List (show a list of the Deck components)
   - title of deck
   - \# of cards in the deck
 - [ ] Deck (show the deck information)
