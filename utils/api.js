@@ -1,5 +1,10 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { DECKS_STORAGE_KEY, formatDecks, makeNewDeck } from "./helpers";
+import {
+  DECKS_STORAGE_KEY,
+  formatDecks,
+  makeNewDeck,
+  getUpdate
+} from "./helpers";
 
 // Get all decks
 export const getDecks = () => {
@@ -34,8 +39,3 @@ export const addCardToDeck = (title, card) => {
       );
     });
 };
-
-const getUpdate = (deck, card) =>
-  Object.assign({}, deck, {
-    questions: deck.questions.concat([card])
-  });

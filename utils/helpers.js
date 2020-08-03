@@ -16,3 +16,8 @@ export const showAsyncStorage = () => {
     console.log({ decks: JSON.parse(item) });
   });
 };
+
+export const getUpdate = (deck, card) =>
+  Object.assign({}, deck, {
+    questions: deck.questions.concat([card])
+  });
