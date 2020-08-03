@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 // Components
 import AddQuestion from "./AddQuestion";
 
@@ -16,8 +16,8 @@ export class Deck extends Component {
     const { title, questions } = deck;
 
     return (
-      <View>
-        <Text>
+      <View style={Styles.container}>
+        <Text style={Styles.deck}>
           {title}: {questions.length} questions
         </Text>
         <AddQuestion deckId={title} />
@@ -27,3 +27,27 @@ export class Deck extends Component {
 }
 
 export default Deck;
+
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "90%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: "5px",
+    padding: "10px",
+    borderColor: "black",
+    borderWidth: "1px",
+    borderRadius: "8px",
+    shadowColor: "grey",
+    shadowRadius: "8px",
+    shadowOffset: { width: "5px", height: "5px" }
+  },
+  deck: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+    margin: "10px",
+    width: "50%"
+  }
+});
