@@ -24,7 +24,7 @@ export class DeckList extends Component {
       <View style={Styles.container}>
         {Object.keys(decks).map((deck) => {
           return (
-            <View key={deck}>
+            <View key={deck} style={Styles.deck}>
               <Text style={Styles.deckTitle}>{decks[deck].title}</Text>
               <Text style={Styles.questionLabel}>
                 {decks[deck].questions.length} questions
@@ -44,11 +44,23 @@ export default connect(mapStateToProps)(DeckList);
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "90%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: "5px"
+  },
+  deck: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+    margin: "10px",
+    width: "50%",
     borderColor: "black",
-    borderRadius: "3px",
+    borderWidth: "1px",
+    borderRadius: "8px",
     shadowColor: "grey",
-    shadowRadius: "3px",
-    shadowOffset: { width: "3px", height: "-3px" }
+    shadowRadius: "8px",
+    shadowOffset: { width: "5px", height: "5px" }
   },
   deckTitle: {
     fontSize: "2rem"
