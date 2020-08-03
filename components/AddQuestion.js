@@ -71,7 +71,7 @@ export class AddQuestion extends Component {
           value={answer}
         />
         <TouchableOpacity
-          style={[styles.submitBtn, { alignItems: "center" }]}
+          style={styles.submitBtn}
           onPress={this.submitQuestion}
         >
           <Text>ADD QUESTION</Text>
@@ -90,8 +90,10 @@ export default connect(mapStateToProps)(AddQuestion);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "white"
+    padding: "20px",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center"
   },
   textInput: {
     alignItems: "flex-start",
@@ -102,6 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   submitBtn: {
-    backgroundColor: "#F0F8FF"
+    backgroundColor: "#F0F8FF",
+    alignItems: "center"
   }
 });
