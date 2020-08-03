@@ -27,8 +27,8 @@ export class DeckList extends Component {
         {Object.keys(decks).map((deck) => {
           return (
             <View key={deck}>
-              <Text>{JSON.stringify(decks[deck])}</Text>
-              <AddQuestion deckId={deck} />
+              <Text>{decks[deck].title}</Text>
+              <Text>{decks[deck].questions.length} questions</Text>
             </View>
           );
         })}
