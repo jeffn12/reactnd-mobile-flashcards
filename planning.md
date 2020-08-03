@@ -2,25 +2,25 @@
 
 ## Views
 
-- Deck List (show a list of the Deck components)
+- [ ] Deck List (show a list of the Deck components)
   - title of deck
   - \# of cards in the deck
-- Deck (show the deck information)
+- [ ] Deck (show the deck information)
   - title
   - \# of cards in the deck
   - option to add a new card
   - option to start a quiz with the deck
-- Quiz (display a card, with 2 answer choices)
+- [ ] Quiz (display a card, with 2 answer choices)
   - question on the card
   - option to view answer (flip card)
   - option to mark "correct"
   - option to mark "incorrect"
   - \# of cards left in the quiz
   - when \# of cards left = 0, show results (percentage)
-- New Deck (add a new deck)
+- [x] New Deck (add a new deck)
   - text input for new deck name
   - submit action
-- New Question
+- [x] New Question
   - text input for question
   - text input for answer
   - submit action
