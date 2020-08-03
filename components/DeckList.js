@@ -5,6 +5,7 @@ import { View, Text, StyleSheet } from "react-native";
 // Helpers
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
+import Deck from "./Deck";
 
 /**
  * DeckList Component - this is the main view for the app, it will initialize data
@@ -29,6 +30,7 @@ export class DeckList extends Component {
               <Text style={Styles.questionLabel}>
                 {decks[deck].questions.length} questions
               </Text>
+              <Deck deck={decks[deck]} />
             </View>
           );
         })}

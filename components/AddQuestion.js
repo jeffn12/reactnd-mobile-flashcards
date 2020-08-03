@@ -34,7 +34,7 @@ export class AddQuestion extends Component {
     });
   };
 
-  submitQuestion = async () => {
+  submitQuestion = () => {
     const { dispatch, deckId } = this.props;
     const { question, answer } = this.state;
 
