@@ -17,9 +17,12 @@ export class Deck extends Component {
 
     return (
       <View style={Styles.container}>
-        <Text style={Styles.deck}>
-          {title}: {questions.length} questions
-        </Text>
+        <View style={Styles.deck}>
+          <Text style={Styles.deckTitle}>{title}</Text>
+          <Text style={Styles.questionLabel}>
+            {"  "}({questions.length} questions)
+          </Text>
+        </View>
         <AddQuestion deckId={title} />
         <TouchableOpacity style={Styles.submitBtn}>
           <Text>START A QUIZ</Text>
@@ -34,10 +37,10 @@ export default Deck;
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
+    width: "100%",
     alignItems: "center",
-    justifyContent: "flex-start",
-    marginTop: "5px",
+    justifyContent: "center",
+    margin: "5px",
     padding: "10px",
     borderColor: "black",
     borderWidth: "1px",
@@ -47,11 +50,18 @@ const Styles = StyleSheet.create({
     shadowOffset: { width: "5px", height: "5px" }
   },
   deck: {
+    flexDirection: "row",
+    flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    padding: "10px",
-    margin: "10px",
-    width: "50%"
+    alignItems: "flex-end"
+  },
+  deckTitle: {
+    fontSize: "2rem"
+  },
+  questionLabel: {
+    fontSize: "1rem",
+    fontStyle: "italic",
+    marginBottom: ".3rem"
   },
   submitBtn: {
     backgroundColor: "#F0F8FF",
