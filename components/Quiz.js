@@ -8,7 +8,8 @@ export class Quiz extends Component {
   state = {
     correct: 0,
     incorrect: 0,
-    currentQuestion: 0
+    currentQuestion: 0,
+    completed: false
   };
 
   /*  Handle a question answer.
@@ -29,19 +30,26 @@ export class Quiz extends Component {
           ? this.setState((currState) => ({
               currentQuestion: currState.currentQuestion + 1
             }))
-          : console.log("Finished Quiz! Here are some stats: ", this.state)
+          : this.handleEndOfQuiz()
     );
+  };
+
+  handleEndOfQuiz = () => {
+    this.setState(() => ({
+      completed: true
+    }));
+    console.log("Finished Quiz! Here are some stats: ", this.state);
   };
 
   render() {
     const { title, questions } = this.props;
-    const { currentQuestion } = this.state;
+    const { currentQuestion, completed } = this.state;
     return (
       <View>
         <Text>
           QUIZ yourself on {questions.length} questions in your {title} deck
         </Text>
-        {questions.length > 0 && (
+        {questions.length > 0 && !completed && (
           <QuizQuestion
             question={questions[currentQuestion]}
             handleAnswer={this.handleAnswer}
