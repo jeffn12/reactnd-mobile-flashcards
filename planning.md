@@ -5,12 +5,12 @@
 - [x] Deck List (show a list of the Deck components)
   - title of deck
   - \# of cards in the deck
-- [ ] Deck (show the deck information)
+- [x] Deck (show the deck information)
   - title
   - \# of cards in the deck
   - option to add a new card
   - option to start a quiz with the deck
-- [ ] Quiz (display a card, with 2 answer choices)
+- [x] Quiz (display a card, with 2 answer choices)
   - question on the card
   - option to view answer (flip card)
   - option to mark "correct"
@@ -36,12 +36,9 @@
 
 ### Redux
 
-- decks?
+- decks
 - actions:
   - get decks
-  - get a specific deck
-  - init/save a new deck
-  - add a new card to a deck
 
 #### Shape of State:
 
