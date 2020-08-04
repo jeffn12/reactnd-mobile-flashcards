@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 // Components
 import QuizQuestion from "./QuizQuestion";
@@ -56,9 +56,9 @@ export class Quiz extends Component {
     const { title, questions } = this.props;
     const { currentQuestion, completed } = this.state;
     return (
-      <View>
-        <Text>
-          QUIZ yourself on {questions.length} questions in your {title} deck
+      <View style={Styles.container}>
+        <Text style={Styles.quizHead}>
+          {title}, {questions.length - currentQuestion} cards left
         </Text>
         {questions.length > 0 && !completed && (
           <QuizQuestion
@@ -69,10 +69,10 @@ export class Quiz extends Component {
         {completed && (
           <View>
             <Text>You are Done!</Text>
-            <TouchableOpacity onPress={this.handleRestart}>
+            <TouchableOpacity style={Styles.btn} onPress={this.handleRestart}>
               <Text>RESTART</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={Styles.btn}>
               <Text>BACK TO DECK</Text>
             </TouchableOpacity>
           </View>
@@ -88,6 +88,24 @@ const mapStateToProps = ({}, { deck }) => ({
 });
 
 export default connect(mapStateToProps)(Quiz);
+
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "90%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: "5px"
+  },
+  quizHead: {
+    fontSize: "1rem"
+  },
+  btn: {
+    backgroundColor: "blue",
+    alignItems: "center",
+    fontSize: ".5rem"
+  }
+});
 
 /**
  * The Quiz view starts with a question from the selected deck.
