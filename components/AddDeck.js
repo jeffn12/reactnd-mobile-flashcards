@@ -43,6 +43,7 @@ export class AddDeck extends Component {
         <Button
           style={styles.submitBtn}
           onPress={this.submit}
+          disabled={title === ""}
           title="ADD NEW DECK"
         />
       </View>
