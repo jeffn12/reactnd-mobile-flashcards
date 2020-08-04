@@ -7,22 +7,28 @@ import {
 } from "./helpers";
 
 // Get all decks
-export const getDecks = () => {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatDecks);
-};
+export const getDecks = () =>
+  AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatDecks);
 
 // Get one deck back for the given id
 export const getDeck = (id) => {
-  return getDecks().then((decks) => decks[id]);
+  return getDecks().then((decks) => {
+    console.log(decks);
+    return decks[id];
+  });
 };
 
 // Initialize a new deck with the given title
 export const saveDeckTitle = async (title) => {
-  return await AsyncStorage.setItem(
-    DECKS_STORAGE_KEY,
-    JSON.stringify({
-      [title]: makeNewDeck(title)
-    })
+  return await getDecks().then(
+    async (decks) =>
+      await AsyncStorage.setItem(
+        DECKS_STORAGE_KEY,
+        JSON.stringify({
+          ...decks,
+          [title]: makeNewDeck(title)
+        })
+      )
   );
 };
 

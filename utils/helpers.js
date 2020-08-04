@@ -3,8 +3,10 @@ import AsyncStorage from "@react-native-community/async-storage";
 export const DECKS_STORAGE_KEY = "Flashcards:decks";
 
 // Deck formatter - parse a JSON object from the AsyncObject response
-export const formatDecks = (decks) => (decks === null ? {} : JSON.parse(decks));
-
+export const formatDecks = (decks) => {
+  console.log("DECKS (to format): ", decks);
+  return decks === null ? {} : JSON.parse(decks);
+};
 // Deck creator - object for an empty deck using given title
 export const makeNewDeck = (title) => ({
   title,
@@ -17,7 +19,9 @@ export const showAsyncStorage = () => {
   });
 };
 
-export const getUpdate = (deck, card) =>
-  Object.assign({}, deck, {
+export const getUpdate = (deck, card) => {
+  console.log(deck);
+  return Object.assign({}, deck, {
     questions: deck.questions.concat([card])
   });
+};

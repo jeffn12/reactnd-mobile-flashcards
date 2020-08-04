@@ -20,7 +20,7 @@ export class AddDeck extends Component {
   submit = () => {
     const { dispatch } = this.props;
     const { title } = this.state;
-    saveDeckTitle(title).then(
+    saveDeckTitle(title).then(() =>
       getDecks().then((decks) => dispatch(receiveDecks(decks)))
     );
 
