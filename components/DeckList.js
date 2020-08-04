@@ -46,17 +46,17 @@ export default connect(mapStateToProps)(DeckList);
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: 5
+    marginTop: 40
   },
   deck: {
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
     margin: 10,
-    width: "50%",
+    height: "25%",
+    width: "99%",
     borderColor: "black",
     borderWidth: 1,
     borderRadius: 8,
@@ -65,7 +65,7 @@ const Styles = StyleSheet.create({
     shadowOffset: { width: 5, height: 5 }
   },
   deckTitle: {
-    fontSize: 2
+    fontSize: 40
   },
   questionLabel: {
     fontSize: 1,
