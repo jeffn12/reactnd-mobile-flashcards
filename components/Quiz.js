@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 // Components
 import QuizQuestion from "./QuizQuestion";
+import QuizScoreDisplay from "./QuizScoreDisplay";
 
 export class Quiz extends Component {
   state = {
@@ -35,6 +36,7 @@ export class Quiz extends Component {
   };
 
   // Set the state to completed when the last question is answered
+  // TODO: create score display
   handleEndOfQuiz = () => {
     this.setState((currState) => ({
       completed: true,
@@ -68,13 +70,19 @@ export class Quiz extends Component {
           />
         )}
         {completed && (
-          <View style={Styles.btnContainer}>
-            <TouchableOpacity style={Styles.btn} onPress={this.handleRestart}>
-              <Text>RESTART</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.btn}>
-              <Text align="center">BACK TO DECK</Text>
-            </TouchableOpacity>
+          <View style={Styles.container}>
+            <QuizScoreDisplay
+              correct={this.state.correct}
+              numQuestions={questions.length}
+            />
+            <View style={Styles.btnContainer}>
+              <TouchableOpacity style={Styles.btn} onPress={this.handleRestart}>
+                <Text>RESTART</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={Styles.btn}>
+                <Text align="center">BACK TO DECK</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       </View>
@@ -115,12 +123,12 @@ const Styles = StyleSheet.create({
 });
 
 /**
- * The Quiz view starts with a question from the selected deck.
+ *
  * The question is displayed, along with a button to show the answer.
  * Pressing the 'Show Answer' button displays the answer.
- * Buttons are included to allow the student to mark their guess as 'Correct' or 'Incorrect'
- * The view displays the number of questions remaining.
+ *
+ *
  * When the last question is answered, a score is displayed. This can be displayed as a percentage of correct answers or just the number of questions answered correctly.
- * When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
- * Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
+ *
+ * 'Back to Deck' buttons route correctly to their respective views.
  */
