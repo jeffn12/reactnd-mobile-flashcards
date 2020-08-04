@@ -6,17 +6,9 @@ import QuizQuestion from "./QuizQuestion";
 
 export class Quiz extends Component {
   state = {
-    numQuestions: 0,
     correct: 0,
     incorrect: 0,
     currentQuestion: 0
-  };
-
-  componentDidMount = () => {
-    const { questions } = this.props;
-    this.setState(() => ({
-      numQuestions: questions.length
-    }));
   };
 
   /*  Handle a question answer.
@@ -25,15 +17,20 @@ export class Quiz extends Component {
    *    update current question (check to make sure currentQuestion doesn't go out-of-range)
    */
   handleAnswer = (answer) => {
-    console.log("Answering: ", answer);
-    this.state.currentQuestion < this.state.numQuestions - 1
-      ? this.setState((currState) => ({
-          correct: answer === "yes" ? currState.correct + 1 : currState.correct,
-          incorrect:
-            answer === "no" ? currState.incorrect + 1 : currState.incorrect,
-          currentQuestion: currState.currentQuestion + 1
-        }))
-      : console.log("Finished Quiz! Here are some stats: ", this.state);
+    const { questions } = this.props;
+    this.setState(
+      (currState) => ({
+        correct: answer === "yes" ? currState.correct + 1 : currState.correct,
+        incorrect:
+          answer === "no" ? currState.incorrect + 1 : currState.incorrect
+      }),
+      () =>
+        this.state.currentQuestion < questions.length - 1
+          ? this.setState((currState) => ({
+              currentQuestion: currState.currentQuestion + 1
+            }))
+          : console.log("Finished Quiz! Here are some stats: ", this.state)
+    );
   };
 
   render() {

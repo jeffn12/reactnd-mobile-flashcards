@@ -3,23 +3,16 @@ import {
   DECKS_STORAGE_KEY,
   formatDecks,
   makeNewDeck,
-  getUpdate,
-  showAsyncStorage
+  getUpdate
 } from "./helpers";
 
 // Get all decks
-export const getDecks = () => {
-  console.log("(Decks) Async: ");
-  showAsyncStorage();
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatDecks);
-};
+export const getDecks = () =>
+  AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatDecks);
 
 // Get one deck back for the given id
 export const getDeck = (id) => {
-  console.log("Async: ");
-  showAsyncStorage();
   return getDecks().then((decks) => {
-    console.log("getDecks: ", decks);
     return decks[id];
   });
 };
