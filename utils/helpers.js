@@ -4,7 +4,6 @@ export const DECKS_STORAGE_KEY = "Flashcards:decks";
 
 // Deck formatter - parse a JSON object from the AsyncObject response
 export const formatDecks = (decks) => {
-  console.log("DECKS (to format): ", decks);
   return decks === null ? {} : JSON.parse(decks);
 };
 // Deck creator - object for an empty deck using given title
@@ -20,7 +19,6 @@ export const showAsyncStorage = () => {
 };
 
 export const getUpdate = (deck, card) => {
-  console.log(deck);
   return Object.assign({}, deck, {
     questions: deck.questions.concat([card])
   });
