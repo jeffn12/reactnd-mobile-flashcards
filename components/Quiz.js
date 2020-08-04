@@ -67,13 +67,12 @@ export class Quiz extends Component {
           />
         )}
         {completed && (
-          <View>
-            <Text>You are Done!</Text>
+          <View style={Styles.btnContainer}>
             <TouchableOpacity style={Styles.btn} onPress={this.handleRestart}>
               <Text>RESTART</Text>
             </TouchableOpacity>
             <TouchableOpacity style={Styles.btn}>
-              <Text>BACK TO DECK</Text>
+              <Text align="center">BACK TO DECK</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -97,13 +96,20 @@ const Styles = StyleSheet.create({
     justifyContent: "flex-start",
     marginTop: "5px"
   },
+  btnContainer: {
+    flex: 1,
+    flexDirection: "row"
+  },
   quizHead: {
     fontSize: "1rem"
   },
   btn: {
+    flex: 1,
     backgroundColor: "blue",
     alignItems: "center",
-    fontSize: ".5rem"
+    justifyContent: "center",
+    margin: "3px",
+    padding: "15px"
   }
 });
 
