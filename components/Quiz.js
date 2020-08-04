@@ -8,7 +8,8 @@ export class Quiz extends Component {
   state = {
     numQuestions: 0,
     correct: 0,
-    incorrect: 0
+    incorrect: 0,
+    currentQuestion: 0
   };
 
   componentDidMount = () => {
@@ -18,14 +19,27 @@ export class Quiz extends Component {
     }));
   };
 
+  /*  Handle a question answer.
+   *    Expect "yes" or "no",
+   *    mark as correct/incorrect
+   *    update current question (check to make sure currentQuestion doesn't go out-of-range)
+   */
+  handleAnswer = (answer) => {
+    console.log("Answering: ", answer);
+    this.setState((currState) => ({
+      numQuestions: currState.numQuestions++
+    }));
+  };
+
   render() {
     const { title, questions } = this.props;
+    const { currentQuestion } = this.state;
     return (
       <View>
         <Text>
           QUIZ yourself on {questions.length} questions in your {title} deck
         </Text>
-        <QuizQuestion question={questions[6]} />
+        <QuizQuestion question={questions[currentQuestion]} />
       </View>
     );
   }
