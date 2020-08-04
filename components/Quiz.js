@@ -28,9 +28,12 @@ export class Quiz extends Component {
     console.log("Answering: ", answer);
     this.state.currentQuestion < this.state.numQuestions - 1
       ? this.setState((currState) => ({
+          correct: answer === "yes" ? currState.correct + 1 : currState.correct,
+          incorrect:
+            answer === "no" ? currState.incorrect + 1 : currState.incorrect,
           currentQuestion: currState.currentQuestion + 1
         }))
-      : console.log("Finished Quiz!");
+      : console.log("Finished Quiz! Here are some stats: ", this.state);
   };
 
   render() {
@@ -41,10 +44,12 @@ export class Quiz extends Component {
         <Text>
           QUIZ yourself on {questions.length} questions in your {title} deck
         </Text>
-        <QuizQuestion
-          question={questions[currentQuestion]}
-          handleAnswer={this.handleAnswer}
-        />
+        {questions.length > 0 && (
+          <QuizQuestion
+            question={questions[currentQuestion]}
+            handleAnswer={this.handleAnswer}
+          />
+        )}
       </View>
     );
   }
