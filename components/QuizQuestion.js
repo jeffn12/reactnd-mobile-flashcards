@@ -5,9 +5,15 @@ export class QuizQuestion extends Component {
   state = {
     showAnswer: false
   };
+
+  submitAnswer = (answer) => {
+    const { handleAnswer } = this.props;
+    this.setState({ showAnswer: false });
+    handleAnswer(answer);
+  };
+
   render() {
     const { showAnswer } = this.state;
-    const { handleAnswer } = this.props;
     const { question, answer } = this.props.question;
 
     return (
@@ -29,13 +35,13 @@ export class QuizQuestion extends Component {
         <View style={Styles.btnContainer}>
           <TouchableOpacity
             style={Styles.btn}
-            onPress={() => handleAnswer("yes")}
+            onPress={() => this.submitAnswer("yes")}
           >
             <Text>YES</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Styles.btn}
-            onPress={() => handleAnswer("no")}
+            onPress={() => this.submitAnswer("no")}
           >
             <Text>NO</Text>
           </TouchableOpacity>
