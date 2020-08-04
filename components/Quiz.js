@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
+// Components
+import QuizQuestion from "./QuizQuestion";
 
 export class Quiz extends Component {
   state = {
@@ -23,6 +25,7 @@ export class Quiz extends Component {
         <Text>
           QUIZ yourself on {questions.length} questions in your {title} deck
         </Text>
+        <QuizQuestion question={questions[6]} />
       </View>
     );
   }
