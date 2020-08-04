@@ -12,23 +12,38 @@ import Quiz from "./Quiz";
  */
 
 export class Deck extends Component {
+  handleStartQuiz = () => {
+    /* <Quiz deck={this.props.deck} /> */
+  };
+
+  handleAddQuestion = () => {
+    <AddQuestion deckId={this.props.title} />;
+  };
+
   render() {
     const { deck } = this.props;
     const { title, questions } = deck;
 
     return (
       <View style={Styles.container}>
-        <View style={Styles.deck}>
+        <View style={Styles.deckInfo}>
           <Text style={Styles.deckTitle}>{title}</Text>
           <Text style={Styles.questionLabel}>
             {"  "}({questions.length} questions)
           </Text>
         </View>
-        <AddQuestion deckId={title} />
-        {/*  <TouchableOpacity style={Styles.submitBtn}>
+        <TouchableOpacity
+          style={Styles.submitBtn}
+          onPress={this.handleAddQuestion}
+        >
+          <Text>ADD A QUESTION</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={Styles.submitBtn}
+          onPress={this.handleStartQuiz}
+        >
           <Text>START A QUIZ</Text>
-        </TouchableOpacity> */}
-        <Quiz deck={deck} />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -38,7 +53,7 @@ export default Deck;
 
 const Styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
     margin: 5,
@@ -50,19 +65,20 @@ const Styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 5, height: 5 }
   },
-  deck: {
+  deckInfo: {
     flexDirection: "row",
-    flex: 1,
     justifyContent: "center",
-    alignItems: "flex-end"
+    alignItems: "flex-end",
+    padding: 5
   },
   deckTitle: {
-    fontSize: 2
+    fontSize: 20,
+    fontWeight: "bold"
   },
   questionLabel: {
-    fontSize: 1,
+    fontSize: 15,
     fontStyle: "italic",
-    marginBottom: 0.3
+    marginBottom: 3
   },
   submitBtn: {
     backgroundColor: "#F0F8FF",
