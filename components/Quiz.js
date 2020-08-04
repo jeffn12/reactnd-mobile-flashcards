@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 // Components
 import QuizQuestion from "./QuizQuestion";
@@ -34,11 +34,22 @@ export class Quiz extends Component {
     );
   };
 
+  // Set the state to completed when the last question is answered
   handleEndOfQuiz = () => {
     this.setState(() => ({
       completed: true
     }));
     console.log("Finished Quiz! Here are some stats: ", this.state);
+  };
+
+  // Restart the quiz by re-initializing the state
+  handleRestart = () => {
+    this.setState(() => ({
+      correct: 0,
+      incorrect: 0,
+      currentQuestion: 0,
+      completed: false
+    }));
   };
 
   render() {
@@ -54,6 +65,14 @@ export class Quiz extends Component {
             question={questions[currentQuestion]}
             handleAnswer={this.handleAnswer}
           />
+        )}
+        {completed && (
+          <View>
+            <Text>You are Done!</Text>
+            <TouchableOpacity onPress={this.handleRestart}>
+              <Text>RESTART</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </View>
     );
