@@ -73,6 +73,7 @@ export class AddQuestion extends Component {
         <TouchableOpacity
           style={styles.submitBtn}
           onPress={this.submitQuestion}
+          disabled={question === "" || answer === ""}
         >
           <Text>ADD QUESTION</Text>
         </TouchableOpacity>
