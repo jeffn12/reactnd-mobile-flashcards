@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 export class QuizScoreDisplay extends Component {
   render() {
     const { correct, numQuestions } = this.props;
     return (
-      <View>
-        <Text>You Finished! Good job!</Text>
-        <Text>
+      <View style={Styles.container}>
+        <Text style={Styles.dashTitle}>You Finished! Good job!</Text>
+        <Text style={Styles.scoreText}>
           {correct}/{numQuestions} -{" "}
           {Math.round((correct / numQuestions) * 100)}%
         </Text>
@@ -17,3 +17,19 @@ export class QuizScoreDisplay extends Component {
 }
 
 export default QuizScoreDisplay;
+
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "90%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: "5px"
+  },
+  dashTitle: {
+    fontSize: "2rem"
+  },
+  scoreText: {
+    fontSize: "1.5rem"
+  }
+});

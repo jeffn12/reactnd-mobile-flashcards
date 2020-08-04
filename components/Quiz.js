@@ -128,7 +128,7 @@ const Styles = StyleSheet.create({
  * Pressing the 'Show Answer' button displays the answer.
  *
  *
- * When the last question is answered, a score is displayed. This can be displayed as a percentage of correct answers or just the number of questions answered correctly.
+ *
  *
  * 'Back to Deck' buttons route correctly to their respective views.
  */
