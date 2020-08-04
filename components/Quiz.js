@@ -101,22 +101,22 @@ const Styles = StyleSheet.create({
     width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: "5px"
+    marginTop: 5
   },
   btnContainer: {
     flex: 1,
     flexDirection: "row"
   },
   quizHead: {
-    fontSize: "1rem"
+    fontSize: 1
   },
   btn: {
     flex: 1,
     backgroundColor: "blue",
     alignItems: "center",
     justifyContent: "center",
-    margin: "3px",
-    padding: "15px"
+    margin: 3,
+    padding: 15
   }
 });
 

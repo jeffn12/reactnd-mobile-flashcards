@@ -91,7 +91,7 @@ export default connect(mapStateToProps)(AddQuestion);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: "20px",
+    padding: 20,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center"

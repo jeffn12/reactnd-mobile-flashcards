@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
 import { View, Text, StyleSheet } from "react-native";
+import Deck from "./Deck";
 // Helpers
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
-import Deck from "./Deck";
 
 /**
  * DeckList Component - this is the main view for the app, it will initialize data
@@ -49,26 +49,26 @@ const Styles = StyleSheet.create({
     width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: "5px"
+    marginTop: 5
   },
   deck: {
     justifyContent: "center",
     alignItems: "center",
-    padding: "10px",
-    margin: "10px",
+    padding: 10,
+    margin: 10,
     width: "50%",
     borderColor: "black",
-    borderWidth: "1px",
-    borderRadius: "8px",
+    borderWidth: 1,
+    borderRadius: 8,
     shadowColor: "grey",
-    shadowRadius: "8px",
-    shadowOffset: { width: "5px", height: "5px" }
+    shadowRadius: 8,
+    shadowOffset: { width: 5, height: 5 }
   },
   deckTitle: {
-    fontSize: "2rem"
+    fontSize: 2
   },
   questionLabel: {
-    fontSize: "1rem",
+    fontSize: 1,
     fontStyle: "italic"
   }
 });

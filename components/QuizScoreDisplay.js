@@ -24,12 +24,12 @@ const Styles = StyleSheet.create({
     width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: "5px"
+    marginTop: 5
   },
   dashTitle: {
-    fontSize: "2rem"
+    fontSize: 3
   },
   scoreText: {
-    fontSize: "1.5rem"
+    fontSize: 2
   }
 });

@@ -42,14 +42,14 @@ const Styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    margin: "5px",
-    padding: "10px",
+    margin: 5,
+    padding: 10,
     borderColor: "black",
-    borderWidth: "1px",
-    borderRadius: "8px",
+    borderWidth: 1,
+    borderRadius: 8,
     shadowColor: "grey",
-    shadowRadius: "8px",
-    shadowOffset: { width: "5px", height: "5px" }
+    shadowRadius: 8,
+    shadowOffset: { width: 5, height: 5 }
   },
   deck: {
     flexDirection: "row",
@@ -58,17 +58,17 @@ const Styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   deckTitle: {
-    fontSize: "2rem"
+    fontSize: 2
   },
   questionLabel: {
-    fontSize: "1rem",
+    fontSize: 1,
     fontStyle: "italic",
-    marginBottom: ".3rem"
+    marginBottom: 0.3
   },
   submitBtn: {
     backgroundColor: "#F0F8FF",
     alignItems: "center",
-    margin: "5px",
+    margin: 5,
     width: "50%"
   }
 });
