@@ -18,24 +18,12 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <Provider store={createStore(reducer, middleware)}>
-      <View style={styles.container}>
-        <Text>TEST</Text>
-        <NavigationContainer style={styles.container}>
-          <Tab.Navigator>
-            <Tab.Screen name="Decks" component={DeckList} />
-            <Tab.Screen name="Add a Deck" component={AddDeck} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </View>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Decks" component={DeckList} />
+          <Tab.Screen name="Add a Deck" component={AddDeck} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#aaa",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
