@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 // Components
 import AddQuestion from "./AddQuestion";
+import Quiz from "./Quiz";
 
 /**
   - [x] title
@@ -24,9 +25,10 @@ export class Deck extends Component {
           </Text>
         </View>
         <AddQuestion deckId={title} />
-        <TouchableOpacity style={Styles.submitBtn}>
+        {/*  <TouchableOpacity style={Styles.submitBtn}>
           <Text>START A QUIZ</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <Quiz deck={deck} />
       </View>
     );
   }

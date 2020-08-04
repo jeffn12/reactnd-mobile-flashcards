@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 export class Quiz extends Component {
   state = {
-    questions: 0,
+    numQuestions: 0,
     correct: 0,
     incorrect: 0
   };
@@ -12,21 +12,25 @@ export class Quiz extends Component {
   componentDidMount = () => {
     const { questions } = this.props;
     this.setState(() => ({
-      questions: questions.length
+      numQuestions: questions.length
     }));
   };
 
   render() {
+    const { title, questions } = this.props;
     return (
       <View>
-        <Text> QUIZ </Text>
+        <Text>
+          QUIZ yourself on {questions.length} questions in your {title} deck
+        </Text>
       </View>
     );
   }
 }
 
-const mapStateToProps = ({}, deck) => ({
-  deck
+const mapStateToProps = ({}, { deck }) => ({
+  questions: deck.questions,
+  title: deck.title
 });
 
 export default connect(mapStateToProps)(Quiz);
