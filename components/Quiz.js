@@ -72,6 +72,9 @@ export class Quiz extends Component {
             <TouchableOpacity onPress={this.handleRestart}>
               <Text>RESTART</Text>
             </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>BACK TO DECK</Text>
+            </TouchableOpacity>
           </View>
         )}
       </View>
