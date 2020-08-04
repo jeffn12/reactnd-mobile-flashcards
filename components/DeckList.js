@@ -24,11 +24,7 @@ export class DeckList extends Component {
     return (
       <View style={Styles.container}>
         {Object.keys(decks).map((deck) => {
-          return (
-            <View key={deck} style={Styles.deck}>
-              <Deck deck={decks[deck]} />
-            </View>
-          );
+          return <Deck key={deck} deck={decks[deck]} />;
         })}
       </View>
     );
@@ -44,27 +40,6 @@ const Styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: 40
-  },
-  deck: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    margin: 10,
-    flex: 1,
-    width: "99%",
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 8,
-    shadowColor: "grey",
-    shadowRadius: 8,
-    shadowOffset: { width: 5, height: 5 }
-  },
-  deckTitle: {
-    fontSize: 40
-  },
-  questionLabel: {
-    fontSize: 1,
-    fontStyle: "italic"
+    marginTop: 50
   }
 });
