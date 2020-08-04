@@ -2,13 +2,30 @@ import React, { Component } from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
 export class QuizQuestion extends Component {
+  state = {
+    showAnswer: false
+  };
   render() {
+    const { showAnswer } = this.state;
     const { handleAnswer } = this.props;
     const { question, answer } = this.props.question;
+
     return (
       <View style={Styles.container}>
         <Text style={Styles.questionLabel}> Question: {question} </Text>
-        <Text style={Styles.answerLabel}> Answer: {answer} </Text>
+        <TouchableOpacity
+          style={Styles.btn}
+          onPress={() =>
+            this.setState((currState) => ({
+              showAnswer: !currState.showAnswer
+            }))
+          }
+        >
+          <Text>{showAnswer ? "HIDE" : "SHOW"} ANSWER</Text>
+        </TouchableOpacity>
+        {showAnswer && (
+          <Text style={Styles.answerLabel}> Answer: {answer} </Text>
+        )}
         <View style={Styles.btnContainer}>
           <TouchableOpacity
             style={Styles.btn}

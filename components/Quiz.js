@@ -36,13 +36,11 @@ export class Quiz extends Component {
   };
 
   // Set the state to completed when the last question is answered
-  // TODO: create score display
   handleEndOfQuiz = () => {
     this.setState((currState) => ({
       completed: true,
       currentQuestion: currState.currentQuestion + 1
     }));
-    console.log("Finished Quiz! Here are some stats: ", this.state);
   };
 
   // Restart the quiz by re-initializing the state
