@@ -82,9 +82,12 @@ export class AddQuestion extends Component {
   }
 }
 
-const mapStateToProps = ({}, { deckId }) => ({
-  deckId
-});
+const mapStateToProps = ({}, { navigation, route }) => {
+  return {
+    navigation,
+    deckId: route.params.deckId
+  };
+};
 
 export default connect(mapStateToProps)(AddQuestion);
 

@@ -11,6 +11,7 @@ import middleware from "./middleware";
 // Components
 import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
+import AddQuestion from "./components/AddQuestion";
 import Deck from "./components/Deck";
 import Quiz from "./components/Quiz";
 
@@ -33,7 +34,14 @@ const DeckStackScreen = () => {
         name="Quiz"
         component={Quiz}
         options={({ route }) => ({
-          headerTitle: route.params.deck.title
+          headerTitle: `Quiz (${route.params.deck.title})`
+        })}
+      />
+      <Stack.Screen
+        name="AddQuestion"
+        component={AddQuestion}
+        options={({ route }) => ({
+          headerTitle: "Add a Card"
         })}
       />
     </Stack.Navigator>

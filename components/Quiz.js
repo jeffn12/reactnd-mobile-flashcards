@@ -103,15 +103,14 @@ const Styles = StyleSheet.create({
     flex: 1,
     width: "90%",
     alignItems: "center",
-    justifyContent: "flex-start",
-    marginTop: 5
+    justifyContent: "flex-start"
   },
   btnContainer: {
     flex: 1,
     flexDirection: "row"
   },
   quizHead: {
-    fontSize: 1
+    fontSize: 20
   },
   btn: {
     flex: 1,

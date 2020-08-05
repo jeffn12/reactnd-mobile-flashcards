@@ -33,8 +33,9 @@ export const saveDeckTitle = async (title) => {
 
 // Add a new card (aka question) to a deck
 export const addCardToDeck = async (title, card) => {
+  console.log(title);
   return await getDeck(title)
-    .then(async (deck) => await getUpdate(deck, card))
+    .then((deck) => getUpdate(deck, card))
     .then(async (update) => {
       await getDecks().then(async (decks) => {
         await AsyncStorage.setItem(

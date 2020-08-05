@@ -17,7 +17,11 @@ export class Deck extends Component {
     });
   };
 
-  handleAddQuestion = () => {};
+  handleAddQuestion = () => {
+    this.props.navigation.navigate("AddQuestion", {
+      deckId: this.props.route.params.deck.title
+    });
+  };
 
   render() {
     const { deck } = this.props.deck ? this.props : this.props.route.params;
