@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableHighlight
-} from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import Deck from "./Deck";
 // Helpers
 import { getDecks } from "../utils/api";
@@ -30,7 +24,6 @@ export class DeckList extends Component {
     Object.keys(decks).forEach((deck) => {
       dataArray.push(this.props.decks[deck]);
     });
-    console.log(dataArray);
     return dataArray;
   };
 
@@ -61,23 +54,3 @@ const Styles = StyleSheet.create({
     marginTop: 50
   }
 });
-
-/**
- * render() {
-    const { decks } = this.props;
-    return (
-      <Stack.Navigator>
-        <Stack.Screen name="title">
-          {() => <Button title="Press Me" />}
-        </Stack.Screen>
-        {Object.keys(decks).map((deck) => {
-          return (
-            <Stack.Screen key={deck} name={deck} options={{ title: deck }}>
-              {() => <Deck deck={decks[deck]} />}
-            </Stack.Screen>
-          );
-        })}
-      </Stack.Navigator>
-    );
-  }
- */

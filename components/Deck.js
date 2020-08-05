@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 // Components
 import AddQuestion from "./AddQuestion";
-import Quiz from "./Quiz";
 
 /**
   - [x] title
