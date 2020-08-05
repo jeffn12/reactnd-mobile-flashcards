@@ -6,6 +6,7 @@ import Deck from "./Deck";
 // Helpers
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 /**
  * DeckList Component - this is the main view for the app, it will initialize data
@@ -28,7 +29,15 @@ export class DeckList extends Component {
   };
 
   renderItem = ({ item }) => {
-    return <Deck deck={item} />;
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          console.log("Pressed...");
+        }}
+      >
+        <Deck deck={item} />
+      </TouchableOpacity>
+    );
   };
 
   render() {
