@@ -10,13 +10,13 @@ export class Deck extends Component {
   };
 
   handleAddQuestion = () => {
+    console.log("Add Question To: ", this.props.deckId);
     this.props.navigation.navigate("AddQuestion", {
-      deckId: this.props.deck.key
+      deckId: this.props.deckId
     });
   };
 
   render() {
-    console.log("Props: ", this.props);
     const deck = this.props.decks[this.props.deckId];
     const { title, questions } = deck;
 

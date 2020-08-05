@@ -11,8 +11,9 @@ export const getDecks = () =>
   AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatDecks);
 
 // Get one deck back for the given id
-export const getDeck = (id) => {
+export const getDeck = async (id) => {
   return getDecks().then((decks) => {
+    console.log("Get Decks: ", id);
     return decks[id];
   });
 };
@@ -33,8 +34,12 @@ export const saveDeckTitle = async (title) => {
 
 // Add a new card (aka question) to a deck
 export const addCardToDeck = async (title, card) => {
+  console.log(title);
   return await getDeck(title)
-    .then((deck) => getUpdate(deck, card))
+    .then((deck) => {
+      console.log("Deck: ", deck);
+      getUpdate(deck, card);
+    })
     .then(async (update) => {
       await getDecks().then(async (decks) => {
         await AsyncStorage.setItem(

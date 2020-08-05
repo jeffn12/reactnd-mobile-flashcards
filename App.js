@@ -27,7 +27,6 @@ const DeckStackScreen = () => {
         name="Deck"
         component={Deck}
         options={({ route }) => {
-          console.log(route);
           return {
             headerTitle: route.params.deckId
           };
