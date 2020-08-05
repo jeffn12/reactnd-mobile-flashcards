@@ -20,7 +20,7 @@ export class Deck extends Component {
   };
 
   render() {
-    const { deck } = this.props;
+    const { deck } = this.props.deck ? this.props : this.props.route.params;
     const { title, questions } = deck;
 
     return (

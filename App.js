@@ -11,6 +11,7 @@ import middleware from "./middleware";
 // Components
 import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
+import Deck from "./components/Deck";
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -23,6 +24,13 @@ const DeckStackScreen = () => {
         name="My Flashcard Decks"
         component={DeckList}
         options={{ tabBarLabel: "My Decks" }}
+      />
+      <Stack.Screen
+        name="Deck"
+        component={Deck}
+        options={({ route }) => ({
+          headerTitle: route.params.deck.title
+        })}
       />
     </Stack.Navigator>
   );

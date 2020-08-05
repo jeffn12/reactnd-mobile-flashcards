@@ -32,7 +32,7 @@ export class DeckList extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          console.log("Pressed...");
+          this.props.navigation.navigate("Deck", { deck: item });
         }}
       >
         <Deck deck={item} />
@@ -54,12 +54,15 @@ export class DeckList extends Component {
   }
 }
 
-const mapStateToProps = (decks) => decks;
+const mapStateToProps = ({ decks }, { navigation }) => {
+  return {
+    decks,
+    navigation
+  };
+};
 
 export default connect(mapStateToProps)(DeckList);
 
 const Styles = StyleSheet.create({
-  container: {
-    marginTop: 50
-  }
+  container: {}
 });
