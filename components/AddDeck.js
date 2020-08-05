@@ -33,11 +33,12 @@ export class AddDeck extends Component {
     const { title } = this.state;
 
     return (
-      <View styles={styles.container}>
-        <Text>Add a New Deck</Text>
+      <View style={styles.container}>
+        <Text style={styles.header}>New Title:</Text>
         <TextInput
           style={styles.titleInput}
           onChangeText={(text) => this.handleTitleInput(text)}
+          placeholder="My New Deck"
           value={title}
         />
         <Button
@@ -58,13 +59,18 @@ export default connect(mapStateToProps)(AddDeck);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    margin: 40,
     padding: 20,
-    backgroundColor: "white"
+    justifyContent: "center"
+  },
+  header: {
+    fontSize: 20
   },
   titleInput: {
     alignItems: "flex-start",
     justifyContent: "flex-start",
     height: 40,
+    fontSize: 20,
     borderWidth: 1,
     borderColor: "black",
     backgroundColor: "white"
