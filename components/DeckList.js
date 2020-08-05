@@ -22,7 +22,7 @@ export class DeckList extends Component {
   parseArrayData = (decks) => {
     let dataArray = [];
     Object.keys(decks).forEach((deck) => {
-      dataArray.push(this.props.decks[deck]);
+      dataArray.unshift(this.props.decks[deck]);
     });
     return dataArray;
   };
