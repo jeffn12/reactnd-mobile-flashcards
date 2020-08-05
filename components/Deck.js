@@ -12,12 +12,12 @@ import AddQuestion from "./AddQuestion";
 
 export class Deck extends Component {
   handleStartQuiz = () => {
-    /* <Quiz deck={this.props.deck} /> */
+    this.props.navigation.navigate("Quiz", {
+      deck: this.props.route.params.deck
+    });
   };
 
-  handleAddQuestion = () => {
-    <AddQuestion deckId={this.props.title} />;
-  };
+  handleAddQuestion = () => {};
 
   render() {
     const { deck } = this.props.deck ? this.props : this.props.route.params;

@@ -12,6 +12,7 @@ import middleware from "./middleware";
 import DeckList from "./components/DeckList";
 import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
+import Quiz from "./components/Quiz";
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -20,14 +21,17 @@ const Stack = createStackNavigator();
 const DeckStackScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="My Flashcard Decks"
-        component={DeckList}
-        options={{ tabBarLabel: "My Decks" }}
-      />
+      <Stack.Screen name="My Decks" component={DeckList} />
       <Stack.Screen
         name="Deck"
         component={Deck}
+        options={({ route }) => ({
+          headerTitle: route.params.deck.title
+        })}
+      />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
         options={({ route }) => ({
           headerTitle: route.params.deck.title
         })}

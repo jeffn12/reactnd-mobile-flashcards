@@ -88,10 +88,13 @@ export class Quiz extends Component {
   }
 }
 
-const mapStateToProps = ({}, { deck }) => ({
-  questions: deck.questions,
-  title: deck.title
-});
+const mapStateToProps = ({}, { route }) => {
+  const { deck } = route.params;
+  return {
+    questions: deck.questions,
+    title: deck.title
+  };
+};
 
 export default connect(mapStateToProps)(Quiz);
 
