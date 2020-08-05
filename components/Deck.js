@@ -53,7 +53,6 @@ export default Deck;
 
 const Styles = StyleSheet.create({
   container: {
-    width: "100%",
     alignItems: "center",
     justifyContent: "center",
     margin: 5,
