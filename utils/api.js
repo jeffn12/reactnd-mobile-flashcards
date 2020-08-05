@@ -33,22 +33,25 @@ export const saveDeckTitle = async (title) => {
 };
 
 // Add a new card (aka question) to a deck
-export const addCardToDeck = async (title, card) => {
-  console.log(title);
-  return await getDeck(title)
-    .then((deck) => {
-      console.log("Deck: ", deck);
-      getUpdate(deck, card);
-    })
-    .then(async (update) => {
-      await getDecks().then(async (decks) => {
-        await AsyncStorage.setItem(
-          DECKS_STORAGE_KEY,
-          JSON.stringify({
-            ...decks,
-            [title]: update
-          })
-        );
+export const addCardToDeck = (title, card) => {
+  console.log("DeckId: ", title);
+  return getDeck(title).then((deck) => {
+    console.log("Deck: ", deck);
+    const update = getUpdate(deck, card);
+
+    console.log("Update: ", update);
+    getDecks().then((decks) => {
+      console.log("Decks to merge to: ", {
+        ...decks,
+        [title]: update
       });
+      AsyncStorage.mergeItem(
+        DECKS_STORAGE_KEY,
+        JSON.stringify({
+          ...decks,
+          [title]: update
+        })
+      );
     });
+  });
 };

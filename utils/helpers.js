@@ -19,7 +19,8 @@ export const showAsyncStorage = () => {
 };
 
 export const getUpdate = (deck, card) => {
-  return Object.assign({}, deck, {
+  const update = Object.assign({}, deck, {
     questions: deck.questions.concat([card])
   });
+  return update;
 };
