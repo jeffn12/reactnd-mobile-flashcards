@@ -35,21 +35,25 @@ export class AddQuestion extends Component {
   };
 
   submitQuestion = () => {
-    const { dispatch, deckId } = this.props;
+    const { dispatch, decks, deckId, navigation } = this.props;
     const { question, answer } = this.state;
 
     // Add a card to the deck in async storage
-    addCardToDeck(deckId, { question, answer }).then(() =>
-      getDecks().then((decks) => {
-        // once card is in aynsc store, update redux
-        dispatch(receiveDecks(decks));
-      })
-    );
-
-    this.setState(() => ({
-      question: "",
-      answer: ""
-    }));
+    addCardToDeck(deckId, { question, answer })
+      .then(
+        async () =>
+          await getDecks().then(async (decks) => {
+            // once card is in aynsc store, update redux
+            await dispatch(receiveDecks(decks));
+          })
+      )
+      .then(() =>
+        this.setState(() => ({
+          question: "",
+          answer: ""
+        }))
+      )
+      .then(() => navigation.navigate("Deck", { deck: decks[deckId] }));
   };
 
   render() {
@@ -82,8 +86,9 @@ export class AddQuestion extends Component {
   }
 }
 
-const mapStateToProps = ({}, { navigation, route }) => {
+const mapStateToProps = ({ decks }, { navigation, route }) => {
   return {
+    decks,
     navigation,
     deckId: route.params.deckId
   };

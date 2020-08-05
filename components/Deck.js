@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-// Components
-import AddQuestion from "./AddQuestion";
-
-/**
-  - [x] title
-  - [x] \# of cards in the deck
-  - [-] option to add a new card
-  - [ ] option to start a quiz with the deck
- */
+import { connect } from "react-redux";
 
 export class Deck extends Component {
   handleStartQuiz = () => {
     this.props.navigation.navigate("Quiz", {
-      deck: this.props.route.params.deck
+      deck: this.props.deck
     });
   };
 
   handleAddQuestion = () => {
     this.props.navigation.navigate("AddQuestion", {
-      deckId: this.props.route.params.deck.title
+      deckId: this.props.deck.key
     });
   };
 
   render() {
-    const { deck } = this.props.deck ? this.props : this.props.route.params;
+    console.log("Props: ", this.props);
+    const deck = this.props.decks[this.props.deckId];
     const { title, questions } = deck;
 
     return (
@@ -52,7 +45,15 @@ export class Deck extends Component {
   }
 }
 
-export default Deck;
+const mapStateToProps = ({ decks }, props) => {
+  return {
+    decks,
+    deckId: props.deckId ? props.deckId : props.route.params.deckId,
+    props
+  };
+};
+
+export default connect(mapStateToProps)(Deck);
 
 const Styles = StyleSheet.create({
   container: {

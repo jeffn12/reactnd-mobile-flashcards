@@ -33,7 +33,6 @@ export const saveDeckTitle = async (title) => {
 
 // Add a new card (aka question) to a deck
 export const addCardToDeck = async (title, card) => {
-  console.log(title);
   return await getDeck(title)
     .then((deck) => getUpdate(deck, card))
     .then(async (update) => {

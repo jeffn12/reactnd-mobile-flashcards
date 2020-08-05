@@ -32,10 +32,13 @@ export class DeckList extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.navigation.navigate("Deck", { deck: item });
+          console.log("Item: ", item.title);
+          this.props.navigation.navigate("Deck", {
+            deckId: item.title
+          });
         }}
       >
-        <Deck deck={item} />
+        <Deck deckId={item.title} />
       </TouchableOpacity>
     );
   };
@@ -48,6 +51,7 @@ export class DeckList extends Component {
           data={this.parseArrayData(decks)}
           keyExtractor={(item) => item.title}
           renderItem={this.renderItem}
+          extraData={true}
         ></FlatList>
       </View>
     );

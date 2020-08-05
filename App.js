@@ -26,9 +26,12 @@ const DeckStackScreen = () => {
       <Stack.Screen
         name="Deck"
         component={Deck}
-        options={({ route }) => ({
-          headerTitle: route.params.deck.title
-        })}
+        options={({ route }) => {
+          console.log(route);
+          return {
+            headerTitle: route.params.deckId
+          };
+        }}
       />
       <Stack.Screen
         name="Quiz"
