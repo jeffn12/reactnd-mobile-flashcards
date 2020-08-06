@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 export class Deck extends Component {
   handleStartQuiz = () => {
     this.props.navigation.navigate("Quiz", {
-      deck: this.props.deck
+      deckId: this.props.deckId
     });
   };
 

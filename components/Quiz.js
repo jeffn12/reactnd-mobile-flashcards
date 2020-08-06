@@ -19,7 +19,7 @@ export class Quiz extends Component {
    *    update current question (check to make sure currentQuestion doesn't go out-of-range)
    */
   handleAnswer = (answer) => {
-    const { questions } = this.props;
+    const { questions } = this.props.decks[this.props.deckId];
     this.setState(
       (currState) => ({
         correct: answer === "yes" ? currState.correct + 1 : currState.correct,
@@ -54,7 +54,8 @@ export class Quiz extends Component {
   };
 
   render() {
-    const { title, questions } = this.props;
+    const deck = this.props.decks[this.props.deckId];
+    const { questions, title } = deck;
     const { currentQuestion, completed } = this.state;
     return (
       <View style={Styles.container}>
@@ -88,11 +89,11 @@ export class Quiz extends Component {
   }
 }
 
-const mapStateToProps = ({}, { route }) => {
-  const { deck } = route.params;
+const mapStateToProps = ({ decks }, { route }) => {
+  const { deckId } = route.params;
   return {
-    questions: deck.questions,
-    title: deck.title
+    decks,
+    deckId
   };
 };
 

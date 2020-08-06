@@ -36,7 +36,7 @@ const DeckStackScreen = () => {
         name="Quiz"
         component={Quiz}
         options={({ route }) => ({
-          headerTitle: `Quiz (${route.params.deck.title})`
+          headerTitle: `Quiz (${route.params.deckId})`
         })}
       />
       <Stack.Screen
