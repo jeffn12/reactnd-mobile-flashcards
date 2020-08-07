@@ -16,7 +16,6 @@ export class Deck extends Component {
 
   // Navigate to the component when the user presses the button
   handleAddQuestion = () => {
-    console.log("Add Question To: ", this.props.deckId);
     this.props.navigation.navigate("AddQuestion", {
       deckId: this.props.deckId
     });

@@ -13,7 +13,6 @@ export const getDecks = () =>
 // Get one deck back for the given id
 export const getDeck = async (id) => {
   return getDecks().then((decks) => {
-    console.log("Get Decks: ", id);
     return decks[id];
   });
 };
