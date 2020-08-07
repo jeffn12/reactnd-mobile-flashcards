@@ -68,6 +68,22 @@ export class Quiz extends Component {
     return (
       <View style={Styles.container}>
         <View style={Styles.container}>
+          {questions.length === 0 && (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <TouchableOpacity
+                style={Styles.btn}
+                onPress={this.props.navigation.goBack}
+              >
+                <Text style={Styles.btnText}>Add Some Questions!</Text>
+              </TouchableOpacity>
+            </View>
+          )}
           {questions.length > 0 && !completed && (
             <QuizQuestion
               question={questions[currentQuestion]}
@@ -89,10 +105,11 @@ export class Quiz extends Component {
                 </TouchableOpacity>
               </View>
               <View>
-                <TouchableOpacity style={Styles.btn}>
-                  <Text style={Styles.btnText} onPress={this.handleGoBack}>
-                    BACK TO DECK
-                  </Text>
+                <TouchableOpacity
+                  style={Styles.btn}
+                  onPress={this.handleGoBack}
+                >
+                  <Text style={Styles.btnText}>BACK TO DECK</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -142,14 +159,3 @@ const Styles = StyleSheet.create({
     fontSize: 30
   }
 });
-
-/**
- *
- *
- *
- *
- *
- *
- *
- * 'Back to Deck' buttons route correctly to their respective views.
- */
