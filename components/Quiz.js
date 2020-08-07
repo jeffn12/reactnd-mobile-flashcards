@@ -50,6 +50,10 @@ export class Quiz extends Component {
     }));
   };
 
+  handleGoBack = () => {
+    this.props.navigation.goBack();
+  };
+
   render() {
     const deck = this.props.decks[this.props.deckId];
     const { questions, title } = deck;
@@ -79,7 +83,7 @@ export class Quiz extends Component {
               </View>
               <View>
                 <TouchableOpacity style={Styles.btn}>
-                  <Text style={Styles.btnText} align="center">
+                  <Text style={Styles.btnText} onPress={this.handleGoBack}>
                     BACK TO DECK
                   </Text>
                 </TouchableOpacity>
@@ -134,8 +138,8 @@ const Styles = StyleSheet.create({
 
 /**
  *
- * The question is displayed, along with a button to show the answer.
- * Pressing the 'Show Answer' button displays the answer.
+ *
+ *
  *
  *
  *
