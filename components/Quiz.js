@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 // Components
 import QuizQuestion from "./QuizQuestion";
 import QuizScoreDisplay from "./QuizScoreDisplay";
+// Styles
+import { blue, white } from "../utils/colors";
 
 export class Quiz extends Component {
   state = {
@@ -13,11 +15,6 @@ export class Quiz extends Component {
     completed: false
   };
 
-  /*  Handle a question answer.
-   *    Expect "yes" or "no",
-   *    mark as correct/incorrect
-   *    update current question (check to make sure currentQuestion doesn't go out-of-range)
-   */
   handleAnswer = (answer) => {
     const { questions } = this.props.decks[this.props.deckId];
     this.setState(
@@ -59,29 +56,42 @@ export class Quiz extends Component {
     const { currentQuestion, completed } = this.state;
     return (
       <View style={Styles.container}>
-        <Text style={Styles.quizHead}>
-          {title}, {questions.length - currentQuestion} cards left
-        </Text>
-        {questions.length > 0 && !completed && (
-          <QuizQuestion
-            question={questions[currentQuestion]}
-            handleAnswer={this.handleAnswer}
-          />
-        )}
-        {completed && (
-          <View style={Styles.container}>
-            <QuizScoreDisplay
-              correct={this.state.correct}
-              numQuestions={questions.length}
+        <View style={Styles.container}>
+          {questions.length > 0 && !completed && (
+            <QuizQuestion
+              question={questions[currentQuestion]}
+              handleAnswer={this.handleAnswer}
             />
-            <View style={Styles.btnContainer}>
-              <TouchableOpacity style={Styles.btn} onPress={this.handleRestart}>
-                <Text>RESTART</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={Styles.btn}>
-                <Text align="center">BACK TO DECK</Text>
-              </TouchableOpacity>
+          )}
+          {completed && (
+            <View style={Styles.container}>
+              <QuizScoreDisplay
+                correct={this.state.correct}
+                numQuestions={questions.length}
+              />
+              <View style={{ flex: 1 }}>
+                <TouchableOpacity
+                  style={Styles.btn}
+                  onPress={this.handleRestart}
+                >
+                  <Text style={Styles.btnText}>RESTART</Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <TouchableOpacity style={Styles.btn}>
+                  <Text style={Styles.btnText} align="center">
+                    BACK TO DECK
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
+          )}
+        </View>
+        {!completed && (
+          <View style={{ alignSelf: "flex-end" }}>
+            <Text style={Styles.quizHead}>
+              {questions.length - currentQuestion} cards left in {title}
+            </Text>
           </View>
         )}
       </View>
@@ -102,24 +112,23 @@ export default connect(mapStateToProps)(Quiz);
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
-    alignItems: "center",
-    justifyContent: "flex-start"
-  },
-  btnContainer: {
-    flex: 1,
-    flexDirection: "row"
+    alignItems: "center"
   },
   quizHead: {
-    fontSize: 20
+    fontSize: 20,
+    fontStyle: "italic",
+    margin: 10
   },
   btn: {
-    flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: blue,
     alignItems: "center",
-    justifyContent: "center",
-    margin: 3,
-    padding: 15
+    margin: 10,
+    padding: 20,
+    width: 300
+  },
+  btnText: {
+    color: white,
+    fontSize: 30
   }
 });
 

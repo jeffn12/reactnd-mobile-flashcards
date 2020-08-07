@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { white, blue } from "../utils/colors";
 
 export class QuizQuestion extends Component {
   state = {
@@ -18,33 +19,43 @@ export class QuizQuestion extends Component {
 
     return (
       <View style={Styles.container}>
-        <Text style={Styles.questionLabel}> Question: {question} </Text>
-        <TouchableOpacity
-          style={Styles.btn}
-          onPress={() =>
-            this.setState((currState) => ({
-              showAnswer: !currState.showAnswer
-            }))
-          }
-        >
-          <Text>{showAnswer ? "HIDE" : "SHOW"} ANSWER</Text>
-        </TouchableOpacity>
-        {showAnswer && (
-          <Text style={Styles.answerLabel}> Answer: {answer} </Text>
-        )}
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Text style={Styles.questionText}> {question} </Text>
+        </View>
         <View style={Styles.btnContainer}>
           <TouchableOpacity
             style={Styles.btn}
             onPress={() => this.submitAnswer("yes")}
           >
-            <Text>YES</Text>
+            <Text style={Styles.btnText}>YES</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Styles.btn}
             onPress={() => this.submitAnswer("no")}
           >
-            <Text>NO</Text>
+            <Text style={Styles.btnText}>NO</Text>
           </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start",
+            alignItems: "center"
+          }}
+        >
+          <TouchableOpacity
+            style={[Styles.btn, { width: 306 }]}
+            onPress={() =>
+              this.setState((currState) => ({
+                showAnswer: !currState.showAnswer
+              }))
+            }
+          >
+            <Text style={Styles.btnText}>
+              {showAnswer ? "HIDE" : "SHOW"} ANSWER
+            </Text>
+          </TouchableOpacity>
+          {showAnswer && <Text style={Styles.answerLabel}> {answer} </Text>}
         </View>
       </View>
     );
@@ -56,20 +67,32 @@ export default QuizQuestion;
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     marginTop: 5
   },
   btnContainer: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    alignItems: "center"
   },
   btn: {
-    flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: blue,
     alignItems: "center",
     margin: 3,
-    padding: 15
+    padding: 30,
+    width: 150
+  },
+  btnText: {
+    color: white,
+    fontSize: 30
+  },
+  questionText: {
+    fontSize: 40
+  },
+  answerLabel: {
+    fontSize: 25,
+    fontStyle: "italic",
+    marginTop: 20
   }
 });

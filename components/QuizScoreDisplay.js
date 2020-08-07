@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet } from "react-native";
+// Styles
+import { blue, white } from "../utils/colors";
 
 export class QuizScoreDisplay extends Component {
   render() {
@@ -21,15 +23,14 @@ export default QuizScoreDisplay;
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     marginTop: 5
   },
   dashTitle: {
-    fontSize: 3
+    fontSize: 40
   },
   scoreText: {
-    fontSize: 2
+    fontSize: 30
   }
 });
