@@ -92,12 +92,6 @@ const Styles = StyleSheet.create({
     marginBottom: 5,
     marginLeft: 2
   },
-  submitBtn: {
-    backgroundColor: "#F0F8FF",
-    alignItems: "center",
-    margin: 5,
-    width: "50%"
-  },
   btn: {
     backgroundColor: blue,
     alignItems: "center",

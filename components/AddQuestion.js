@@ -11,6 +11,8 @@ import {
 // Helpers
 import { addCardToDeck, getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
+// Styles
+import { blue, white, orange } from "../utils/colors";
 
 export class AddQuestion extends Component {
   state = {
@@ -60,26 +62,29 @@ export class AddQuestion extends Component {
     const { question, answer } = this.state;
 
     return (
-      <View styles={styles.container}>
-        <Text>Add a new Question:</Text>
-        <Text>Question: </Text>
+      <View style={Styles.container}>
+        <Text style={Styles.inputLabel}>Question: </Text>
         <TextInput
-          style={styles.textInput}
+          style={Styles.textInput}
           onChangeText={(text) => this.handleQuestionInput(text)}
           value={question}
+          placeholder="Enter your question"
+          multiline={true}
         />
-        <Text>Answer: </Text>
+        <Text style={Styles.inputLabel}>Answer: </Text>
         <TextInput
-          style={styles.textInput}
+          style={Styles.textInput}
           onChangeText={(text) => this.handleAnswerInput(text)}
           value={answer}
+          placeholder="Enter the answer"
+          multiline={true}
         />
         <TouchableOpacity
-          style={styles.submitBtn}
+          style={Styles.btn}
           onPress={this.submitQuestion}
           disabled={question === "" || answer === ""}
         >
-          <Text>ADD QUESTION</Text>
+          <Text style={Styles.btnText}>ADD QUESTION</Text>
         </TouchableOpacity>
       </View>
     );
@@ -96,24 +101,40 @@ const mapStateToProps = ({ decks }, { navigation, route }) => {
 
 export default connect(mapStateToProps)(AddQuestion);
 
-const styles = StyleSheet.create({
+const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center"
   },
   textInput: {
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    height: 40,
+    height: 60,
+    padding: 5,
+    fontSize: 20,
+    width: "90%",
     borderWidth: 1,
     borderColor: "black",
+    borderRadius: 8,
+    shadowColor: "grey",
+    shadowRadius: 8,
+    shadowOffset: { width: 5, height: 5 },
     backgroundColor: "white"
   },
-  submitBtn: {
-    backgroundColor: "#F0F8FF",
-    alignItems: "center"
+  inputLabel: {
+    alignSelf: "flex-start",
+    fontSize: 30,
+    marginLeft: 20,
+    marginTop: 20
+  },
+  btn: {
+    backgroundColor: blue,
+    alignItems: "center",
+    margin: 30,
+    padding: 20,
+    width: 300
+  },
+  btnText: {
+    color: white,
+    fontSize: 25
   }
 });
