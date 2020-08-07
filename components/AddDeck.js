@@ -20,10 +20,10 @@ export class AddDeck extends Component {
     }));
   };
 
-  submit = () => {
+  submit = async () => {
     const { dispatch } = this.props;
     const { title } = this.state;
-    saveDeckTitle(title).then(() =>
+    await saveDeckTitle(title).then(() =>
       getDecks().then((decks) => dispatch(receiveDecks(decks)))
     );
 
@@ -31,7 +31,7 @@ export class AddDeck extends Component {
       title: ""
     }));
 
-    this.props.navigation.navigate("My Decks");
+    this.props.navigation.navigate("Deck", { deckId: title });
   };
 
   render() {
