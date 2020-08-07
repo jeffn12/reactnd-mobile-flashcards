@@ -45,6 +45,7 @@ export class AddDeck extends Component {
           onChangeText={(text) => this.handleTitleInput(text)}
           placeholder="My New Deck..."
           value={title}
+          returnKeyType="done"
         />
         <TouchableOpacity
           style={styles.btn}
