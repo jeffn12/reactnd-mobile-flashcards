@@ -30,6 +30,8 @@ export class AddDeck extends Component {
     this.setState(() => ({
       title: ""
     }));
+
+    this.props.navigation.navigate("DeckList");
   };
 
   render() {
