@@ -67,5 +67,8 @@ const mapStateToProps = ({ decks }, { navigation }) => {
 export default connect(mapStateToProps)(DeckList);
 
 const Styles = StyleSheet.create({
-  container: {}
+  container: {
+    flex: 1,
+    justifyContent: "flex-start"
+  }
 });

@@ -23,16 +23,33 @@ export class Deck extends Component {
     const { title, questions } = deck;
 
     return (
-      <View style={Styles.container}>
-        <View style={Styles.deck}>
+      <View
+        style={[
+          Styles.container,
+          { alignItems: this.props.route ? "center" : "flex-start" }
+        ]}
+      >
+        <View
+          style={[Styles.deck, { width: !this.props.route ? "95%" : "auto" }]}
+        >
           <Text style={Styles.deckTitle}>{title}</Text>
           <Text style={Styles.questionLabel}>{questions.length} questions</Text>
-          <TouchableOpacity style={Styles.btn} onPress={this.handleAddQuestion}>
-            <Text style={Styles.btnText}>ADD A QUESTION</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={Styles.btn} onPress={this.handleStartQuiz}>
-            <Text style={Styles.btnText}>START A QUIZ</Text>
-          </TouchableOpacity>
+          {this.props.route && (
+            <View>
+              <TouchableOpacity
+                style={Styles.btn}
+                onPress={this.handleAddQuestion}
+              >
+                <Text style={Styles.btnText}>ADD A QUESTION</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={Styles.btn}
+                onPress={this.handleStartQuiz}
+              >
+                <Text style={Styles.btnText}>START A QUIZ</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </View>
     );
@@ -52,11 +69,11 @@ export default connect(mapStateToProps)(Deck);
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center"
   },
   deck: {
     padding: 15,
+    margin: 10,
     borderColor: "black",
     borderWidth: 1,
     borderRadius: 8,
