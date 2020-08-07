@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 // Helpers
 import { addCardToDeck, getDecks } from "../utils/api";
@@ -59,23 +66,30 @@ export class AddQuestion extends Component {
     const { question, answer } = this.state;
 
     return (
-      <View style={Styles.container}>
-        <Text style={Styles.inputLabel}>Question: </Text>
-        <TextInput
-          style={Styles.textInput}
-          onChangeText={(text) => this.handleQuestionInput(text)}
-          value={question}
-          placeholder="Enter your question"
-          multiline={true}
-        />
-        <Text style={Styles.inputLabel}>Answer: </Text>
-        <TextInput
-          style={Styles.textInput}
-          onChangeText={(text) => this.handleAnswerInput(text)}
-          value={answer}
-          placeholder="Enter the answer"
-          multiline={true}
-        />
+      <KeyboardAvoidingView
+        style={Styles.container}
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
+        <View style={Styles.inputBlock}>
+          <Text style={Styles.inputLabel}>Question: </Text>
+          <TextInput
+            style={Styles.textInput}
+            onChangeText={(text) => this.handleQuestionInput(text)}
+            value={question}
+            placeholder="Enter your question"
+            returnKeyType="done"
+          />
+        </View>
+        <View style={Styles.inputBlock}>
+          <Text style={Styles.inputLabel}>Answer: </Text>
+          <TextInput
+            style={Styles.textInput}
+            onChangeText={(text) => this.handleAnswerInput(text)}
+            value={answer}
+            placeholder="Enter the answer"
+            returnKeyType="done"
+          />
+        </View>
         <TouchableOpacity
           style={Styles.btn}
           onPress={this.submitQuestion}
@@ -83,7 +97,7 @@ export class AddQuestion extends Component {
         >
           <Text style={Styles.btnText}>ADD CARD</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -102,6 +116,10 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center"
+  },
+  inputBlock: {
+    width: "100%",
     alignItems: "center"
   },
   textInput: {
