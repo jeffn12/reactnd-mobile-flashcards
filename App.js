@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -16,6 +16,7 @@ import Deck from "./components/Deck";
 import Quiz from "./components/Quiz";
 // Styles
 import { blue } from "./utils/colors";
+import { setLocalNotification } from "./utils/helpers";
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -52,22 +53,28 @@ const DeckStackScreen = () => {
   );
 };
 
-export default function App() {
-  return (
-    <Provider store={createStore(reducer, middleware)}>
-      <NavigationContainer>
-        <Tab.Navigator
-          tabBarOptions={{
-            activeTintColor: blue,
-            labelStyle: {
-              fontSize: 20
-            }
-          }}
-        >
-          <Tab.Screen name="My Decks" component={DeckStackScreen} />
-          <Tab.Screen name="Add a Deck" component={AddDeck} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </Provider>
-  );
+export default class App extends Component {
+  componentDidMount = () => {
+    setLocalNotification();
+  };
+
+  render() {
+    return (
+      <Provider store={createStore(reducer, middleware)}>
+        <NavigationContainer>
+          <Tab.Navigator
+            tabBarOptions={{
+              activeTintColor: blue,
+              labelStyle: {
+                fontSize: 20
+              }
+            }}
+          >
+            <Tab.Screen name="My Decks" component={DeckStackScreen} />
+            <Tab.Screen name="Add a Deck" component={AddDeck} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </Provider>
+    );
+  }
 }

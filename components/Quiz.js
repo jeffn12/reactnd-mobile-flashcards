@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 // Components
 import QuizQuestion from "./QuizQuestion";
 import QuizScoreDisplay from "./QuizScoreDisplay";
+// Notifications
+import { setLocalNotification, clearLocalNotification } from "../utils/helpers";
 // Styles
 import { blue, white } from "../utils/colors";
 
@@ -38,6 +40,7 @@ export class Quiz extends Component {
       completed: true,
       currentQuestion: currState.currentQuestion + 1
     }));
+    clearLocalNotification().then(setLocalNotification);
   };
 
   // Restart the quiz by re-initializing the state
