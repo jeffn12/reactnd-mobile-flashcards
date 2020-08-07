@@ -39,7 +39,6 @@ export class AddQuestion extends Component {
   submitQuestion = () => {
     const { dispatch, decks, deckId, navigation } = this.props;
     const { question, answer } = this.state;
-    console.log("Submit Question, props: ", this.props);
     // Add a card to the deck in async storage
     addCardToDeck(deckId, { question, answer })
       .then(
@@ -84,7 +83,7 @@ export class AddQuestion extends Component {
           onPress={this.submitQuestion}
           disabled={question === "" || answer === ""}
         >
-          <Text style={Styles.btnText}>ADD QUESTION</Text>
+          <Text style={Styles.btnText}>ADD CARD</Text>
         </TouchableOpacity>
       </View>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 // Helpers
 import { saveDeckTitle, getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
@@ -31,7 +31,7 @@ export class AddDeck extends Component {
       title: ""
     }));
 
-    this.props.navigation.navigate("DeckList");
+    this.props.navigation.navigate("My Decks");
   };
 
   render() {

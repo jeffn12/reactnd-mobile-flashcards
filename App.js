@@ -64,7 +64,7 @@ export default function App() {
             }
           }}
         >
-          <Tab.Screen name="DeckList" component={DeckStackScreen} />
+          <Tab.Screen name="My Decks" component={DeckStackScreen} />
           <Tab.Screen name="Add a Deck" component={AddDeck} />
         </Tab.Navigator>
       </NavigationContainer>

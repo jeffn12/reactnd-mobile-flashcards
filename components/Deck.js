@@ -33,14 +33,14 @@ export class Deck extends Component {
           style={[Styles.deck, { width: !this.props.route ? "95%" : "auto" }]}
         >
           <Text style={Styles.deckTitle}>{title}</Text>
-          <Text style={Styles.questionLabel}>{questions.length} questions</Text>
+          <Text style={Styles.questionLabel}>{questions.length} cards</Text>
           {this.props.route && (
             <View>
               <TouchableOpacity
                 style={Styles.btn}
                 onPress={this.handleAddQuestion}
               >
-                <Text style={Styles.btnText}>ADD A QUESTION</Text>
+                <Text style={Styles.btnText}>ADD A CARD</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={Styles.btn}
