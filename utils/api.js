@@ -34,17 +34,9 @@ export const saveDeckTitle = async (title) => {
 
 // Add a new card (aka question) to a deck
 export const addCardToDeck = async (title, card) => {
-  console.log("DeckId: ", title);
   return await getDeck(title).then(async (deck) => {
-    console.log("Deck: ", deck);
     const update = getUpdate(deck, card);
-
-    console.log("Update: ", update);
     await getDecks().then(async (decks) => {
-      console.log("Decks to merge to: ", {
-        ...decks,
-        [title]: update
-      });
       await AsyncStorage.mergeItem(
         DECKS_STORAGE_KEY,
         JSON.stringify({

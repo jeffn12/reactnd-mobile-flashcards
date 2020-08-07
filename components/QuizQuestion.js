@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+// Components
+import { Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+// Styles
 import { white, blue } from "../utils/colors";
 
 export class QuizQuestion extends Component {
@@ -7,9 +10,10 @@ export class QuizQuestion extends Component {
     showAnswer: false
   };
 
+  // Handle an answer button press
   submitAnswer = (answer) => {
     const { handleAnswer } = this.props;
-    this.setState({ showAnswer: false });
+    this.setState({ showAnswer: false }); // make sure the answer is hidden when the next question appears
     handleAnswer(answer);
   };
 

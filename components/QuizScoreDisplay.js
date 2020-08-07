@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet } from "react-native";
-// Styles
-import { blue, white } from "../utils/colors";
 
+// Score dashboard display for end of quiz
 export class QuizScoreDisplay extends Component {
   render() {
     const { correct, numQuestions } = this.props;

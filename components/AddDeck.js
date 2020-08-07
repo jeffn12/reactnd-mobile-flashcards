@@ -2,24 +2,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 // Helpers
 import { saveDeckTitle, getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
 // Styles
 import { blue, white } from "../utils/colors";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export class AddDeck extends Component {
   state = {
     title: ""
   };
 
+  // Handler for controlled component
   handleTitleInput = (title) => {
     this.setState(() => ({
       title
     }));
   };
 
+  // Add the deck to async storage, then update redux
   submit = async () => {
     const { dispatch } = this.props;
     const { title } = this.state;
@@ -31,6 +33,7 @@ export class AddDeck extends Component {
       title: ""
     }));
 
+    // Navigate to the new deck when it is created
     this.props.navigation.navigate("Deck", { deckId: title });
   };
 

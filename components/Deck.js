@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
+// Components
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 // Styles
 import { blue, white } from "../utils/colors";
 
 export class Deck extends Component {
+  // Navigate to the component when user presses the button
   handleStartQuiz = () => {
     this.props.navigation.navigate("Quiz", {
       deckId: this.props.deckId
     });
   };
 
+  // Navigate to the component when the user presses the button
   handleAddQuestion = () => {
     console.log("Add Question To: ", this.props.deckId);
     this.props.navigation.navigate("AddQuestion", {

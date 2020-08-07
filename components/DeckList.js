@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
 import { View, FlatList, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import Deck from "./Deck";
 // Helpers
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 /**
  * DeckList Component - this is the main view for the app, it will initialize data
@@ -14,12 +14,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
  */
 
 export class DeckList extends Component {
+  // When the component mounts, initialize the redux store with data from AsyncStorage
   componentDidMount = () => {
     const { dispatch } = this.props;
 
     getDecks().then((decks) => dispatch(receiveDecks(decks)));
   };
 
+  // Convert an object of objects into an array of objects for the FlatList
   parseArrayData = (decks) => {
     let dataArray = [];
     Object.keys(decks).forEach((deck) => {

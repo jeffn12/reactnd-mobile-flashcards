@@ -18,10 +18,12 @@ import Quiz from "./components/Quiz";
 import { blue } from "./utils/colors";
 import { setLocalNotification } from "./utils/helpers";
 
+// Configure Navigation
 enableScreens();
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+// Stack Navigator Setup
 const DeckStackScreen = () => {
   return (
     <Stack.Navigator>
@@ -55,6 +57,7 @@ const DeckStackScreen = () => {
 
 export default class App extends Component {
   componentDidMount = () => {
+    // Set the local notification when the app loads
     setLocalNotification();
   };
 

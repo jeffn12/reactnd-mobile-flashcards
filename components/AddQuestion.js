@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Components
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  StyleSheet,
-  TextInput
-} from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 // Helpers
 import { addCardToDeck, getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
@@ -20,6 +15,7 @@ export class AddQuestion extends Component {
     answer: ""
   };
 
+  // Handler for controlled components
   handleQuestionInput = (text) => {
     this.setState(() => {
       return {
@@ -28,6 +24,7 @@ export class AddQuestion extends Component {
     });
   };
 
+  // Handler for controlled component
   handleAnswerInput = (text) => {
     this.setState(() => {
       return {
@@ -36,6 +33,7 @@ export class AddQuestion extends Component {
     });
   };
 
+  // Add a question to a deck in Async storage, then update redux
   submitQuestion = () => {
     const { dispatch, decks, deckId, navigation } = this.props;
     const { question, answer } = this.state;
@@ -53,7 +51,7 @@ export class AddQuestion extends Component {
           question: "",
           answer: ""
         }))
-      )
+      ) // Go back to the deck when the question is created
       .then(() => navigation.navigate("Deck", { deck: decks[deckId] }));
   };
 

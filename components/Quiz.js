@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 // Components
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import QuizQuestion from "./QuizQuestion";
 import QuizScoreDisplay from "./QuizScoreDisplay";
 // Notifications
@@ -17,6 +18,7 @@ export class Quiz extends Component {
     completed: false
   };
 
+  // When the user answers the question, update stats and move on
   handleAnswer = (answer) => {
     const { questions } = this.props.decks[this.props.deckId];
     this.setState(
@@ -26,6 +28,7 @@ export class Quiz extends Component {
           answer === "no" ? currState.incorrect + 1 : currState.incorrect
       }),
       () =>
+        // End the quiz if there are no questions left
         this.state.currentQuestion < questions.length - 1
           ? this.setState((currState) => ({
               currentQuestion: currState.currentQuestion + 1
@@ -34,7 +37,7 @@ export class Quiz extends Component {
     );
   };
 
-  // Set the state to completed when the last question is answered
+  // Set the state to completed when the last question is answered and reset the notification to tomorrow
   handleEndOfQuiz = () => {
     this.setState((currState) => ({
       completed: true,
@@ -53,6 +56,7 @@ export class Quiz extends Component {
     }));
   };
 
+  // Return to the deck when the user presses the button
   handleGoBack = () => {
     this.props.navigation.goBack();
   };
