@@ -12,7 +12,7 @@ import {
 import { addCardToDeck, getDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
 // Styles
-import { blue, white, orange } from "../utils/colors";
+import { blue, white } from "../utils/colors";
 
 export class AddQuestion extends Component {
   state = {
