@@ -14,6 +14,8 @@ import AddDeck from "./components/AddDeck";
 import AddQuestion from "./components/AddQuestion";
 import Deck from "./components/Deck";
 import Quiz from "./components/Quiz";
+// Styles
+import { blue } from "./utils/colors";
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -42,7 +44,7 @@ const DeckStackScreen = () => {
       <Stack.Screen
         name="AddQuestion"
         component={AddQuestion}
-        options={({ route }) => ({
+        options={() => ({
           headerTitle: "Add a Card"
         })}
       />
@@ -54,7 +56,14 @@ export default function App() {
   return (
     <Provider store={createStore(reducer, middleware)}>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          tabBarOptions={{
+            activeTintColor: blue,
+            labelStyle: {
+              fontSize: 20
+            }
+          }}
+        >
           <Tab.Screen name="My Decks" component={DeckStackScreen} />
           <Tab.Screen name="Add a Deck" component={AddDeck} />
         </Tab.Navigator>
