@@ -9,6 +9,7 @@ To use this application locally, you need:
 1. Node.js & npm
 1. Expo client app on a mobile device, or an iOS/Android simulator (_The best experience will be on a mobile device_)
 
+Don't want to deal with downloading and installing anything?  Check out a web-based version on Surge: http://mobile-flashcards.surge.sh/
 ### Installation
 
 1. `git clone https://github.com/jeffn12/reactnd-flashcards.git` to clone the repo
